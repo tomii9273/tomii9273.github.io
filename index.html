@@ -1,8 +1,204 @@
-<!doctype html>
-<html>
+<!doctype html><<html lang="ja">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="base.css" />
     <title>Tomii9273 - ポートフォリオ</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --page-background: linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+        --surface: rgba(255, 255, 255, 0.92);
+        --surface-strong: #ffffff;
+        --line: #d7e0ea;
+        --text: #213042;
+        --accent: #1f4f8f;
+        --accent-soft: #eef4ff;
+        --shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px 16px 56px;
+        background: var(--page-background);
+        color: var(--text);
+        font-family: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      header,
+      section {
+        width: min(980px, 100%);
+        margin: 0 auto 24px;
+      }
+
+      header {
+        position: relative;
+        padding: 32px 36px;
+        background: linear-gradient(135deg, #ffffff, #eff5ff);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      header::after {
+        content: "";
+        position: absolute;
+        right: 36px;
+        bottom: 0;
+        left: 36px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), #7aa7ff);
+        border-radius: 999px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.2;
+        letter-spacing: 0.03em;
+      }
+
+      section {
+        padding: 24px 28px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.05);
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        font-size: 1.25rem;
+        color: var(--accent);
+        letter-spacing: 0.02em;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.25rem;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      ul ul {
+        margin-top: 8px;
+        padding-left: 1.15rem;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.16em;
+      }
+
+      a:hover {
+        color: #173867;
+      }
+
+      #contact ul {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      #contact li {
+        padding: 10px 14px;
+        background: var(--accent-soft);
+        border: 1px solid #d8e6ff;
+        border-radius: 14px;
+      }
+
+      #contact li + li {
+        margin-top: 10px;
+      }
+
+      .table-scroll {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface-strong);
+      }
+
+      table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+        background: var(--surface-strong);
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        background: var(--accent-soft);
+      }
+
+      tr:nth-child(even) td {
+        background: #fafcff;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      #products th:nth-child(1),
+      #products td:nth-child(1) {
+        width: 18%;
+      }
+
+      #products th:nth-child(2),
+      #products td:nth-child(2),
+      #products th:nth-child(3),
+      #products td:nth-child(3),
+      #products th:nth-child(5),
+      #products td:nth-child(5) {
+        white-space: nowrap;
+      }
+
+      @media (max-width: 720px) {
+        body {
+          padding: 20px 12px 40px;
+        }
+
+        header,
+        section {
+          width: 100%;
+          margin-bottom: 18px;
+          padding: 20px;
+          border-radius: 18px;
+        }
+
+        header::after {
+          right: 20px;
+          left: 20px;
+        }
+
+        h2 {
+          margin-bottom: 14px;
+        }
+
+        th,
+        td {
+          padding: 12px 14px;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -102,87 +298,119 @@
 
     <section id="products">
       <h2>Products</h2>
-      <table border="1">
-        <tr align="left">
-          <th>名前</th>
-          <th>種類</th>
-          <th>初公開</th>
-          <th>説明</th>
-          <th>ソースコード</th>
-        </tr>
-        <tr align="left">
-          <td>
-            <a href="https://mj-point-practice.web.app/">麻雀 点数計算練習</a>
-          </td>
-          <td>Web アプリ</td>
-          <td>2026.03</td>
-          <td>日本麻雀・中国麻雀の点数計算を難易度別に練習できるアプリです。</td>
+      <div class="table-scroll">
+        <table>
+          <tr align="left">
+            <th>名前</th>
+            <th>種類</th>
+            <th>初公開</th>
+            <th>説明</th>
+            <th>ソースコード</th>
+          </tr>
+          <tr align="left">
+            <td>
+              <a href="https://mj-point-practice.web.app/">麻雀 点数計算練習</a>
+            </td>
+            <td>Web アプリ</td>
+            <td>2026.03</td>
+            <td>日本麻雀・中国麻雀の点数計算を難易度別に練習できるアプリです。</td>
+            <td>(準備中)</td>
+          </tr>
+          <tr align="left">
+            <td><a href="https://atcoder-type-checker.herokuapp.com/">AtCoder Type Checker</a></td>
+            <td>Web アプリ</td>
+            <td>2021.03</td>
+            <td><a href="https://atcoder.jp/">AtCoder</a> のコンテスト成績から「多く解くタイプ」であるか「早く解くタイプ」であるかを判定します。</td>
+            <td><a href="https://github.com/tomii9273/atcoder_type_checker">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td><a href="https://tomii6614.web.fc2.com/">麻雀大会用卓組表</a></td>
+            <td>Web サイト</td>
+            <td>2017.01</td>
+            <td>麻雀など、多人数で行うゲームの大会等に使用できる卓組表 (対戦表) と作成方法を掲載しています。</td>
+            <td><a href="https://github.com/tomii9273/mahjong_takugumi">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td><a href="https://twitter.com/ChineseMJBot">中国麻雀役Bot</a></td>
+            <td>X (Twitter) bot</td>
+            <td>2015.03</td>
+            <td>中国麻雀の役やルール、日本麻雀との違いなどについて自動で定期投稿をします。</td>
+            <td><a href="https://github.com/tomii9273/chinese_mahjong_bot">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td><a href="https://twitter.com/AfterContestBot">AtCoder After Contest Bot</a></td>
+            <td>X (Twitter) bot</td>
+            <td>2023.09</td>
+            <td><a href="https://atcoder.jp/">AtCoder</a> でコンテスト後にテストケースが追加された際に自動で告知投稿をします。</td>
+            <td><a href="https://github.com/tomii9273/atcoder_after_contest_bot">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td>
+              <a href="https://chromewebstore.google.com/detail/atcoder-parallel-alert/poiijcpfeaijlocfncmimadjkppkplef">AtCoder Parallel Alert</a>
+            </td>
+            <td>Chrome 拡張機能</td>
+            <td>2023.11</td>
+            <td>
+              <a href="https://atcoder.jp/">AtCoder</a> で AHC
+              とそれ以外のコンテストの問題文を同時に開いている場合に、後者の提出欄に警告文を表示します。<br />
+              誤提出による意図しない規約違反を防ぐのが目的です。
+            </td>
+            <td><a href="https://github.com/tomii9273/atcoder_parallel_alert">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td><a href="https://tsumego-mini-239f0748ace2.herokuapp.com">3路盤 囲碁パズル</a></td>
+            <td>Web アプリ</td>
+            <td>2024.05</td>
+            <td>囲碁のルールを用いたパズルゲームです。</td>
+            <td><a href="https://github.com/tomii9273/tsumego_mini">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td>
+              <a href="https://check-mahjong-hand.herokuapp.com/">麻雀の待ち判定・全アガリ形列挙<br />(オールマイティ牌・銀河牌対応)</a>
+            </td>
+            <td>Web アプリ</td>
+            <td>2023.03</td>
+            <td>
+              麻雀の手牌を入力すると、待ちを判定し、全アガリ形を列挙します。<br />特殊なルールで使用される「オールマイティ牌」が複数枚ある場合などのパターン数の多い計算も、数秒以内に行います。
+            </td>
+            <td><a href="https://github.com/tomii9273/check_mahjong_hand">GitHub</a></td>
+          </tr>
+          <tr align="left">
+            <td>
+              <a href="https://kensa-hantei-802eb44db172.herokuapp.com/">検査キット 薄いライン可視化</a>
+            </td>
+            <td>Web アプリ</td>
+            <td>2024.12</td>
+            <td>新型コロナ等の検査キットを使った結果、薄いラインがあるように見える場合にグラフで可視化し、陽性・陰性の判定を補助します。</td>
+            <td>(準備中)</td>
+          </tr>
+        </table>
+      </div>
+     <td>Web アプリ</td>
+          <td>2024.12</td>
+          <td>新型コロナ等の検査キットを使った結果、薄いラインがあるように見える場合にグラフで可視化し、陽性・陰性の判定を補助します。</td>
           <td>(準備中)</td>
         </tr>
-        <tr align="left">
-          <td><a href="https://atcoder-type-checker.herokuapp.com/">AtCoder Type Checker</a></td>
-          <td>Web アプリ</td>
-          <td>2021.03</td>
-          <td><a href="https://atcoder.jp/">AtCoder</a> のコンテスト成績から「多く解くタイプ」であるか「早く解くタイプ」であるかを判定します。</td>
-          <td><a href="https://github.com/tomii9273/atcoder_type_checker">GitHub</a></td>
+      </table>
+     <td>Web アプリ</td>
+          <td>2024.12</td>
+          <td>新型コロナ等の検査キットを使った結果、薄いラインがあるように見える場合にグラフで可視化し、陽性・陰性の判定を補助します。</td>
+          <td>(準備中)</td>
         </tr>
-        <tr align="left">
-          <td><a href="https://tomii6614.web.fc2.com/">麻雀大会用卓組表</a></td>
-          <td>Web サイト</td>
-          <td>2017.01</td>
-          <td>麻雀など、多人数で行うゲームの大会等に使用できる卓組表 (対戦表) と作成方法を掲載しています。</td>
-          <td><a href="https://github.com/tomii9273/mahjong_takugumi">GitHub</a></td>
+      </table>
+     <td>Web アプリ</td>
+          <td>2024.12</td>
+          <td>新型コロナ等の検査キットを使った結果、薄いラインがあるように見える場合にグラフで可視化し、陽性・陰性の判定を補助します。</td>
+          <td>(準備中)</td>
         </tr>
-        <tr align="left">
-          <td><a href="https://twitter.com/ChineseMJBot">中国麻雀役Bot</a></td>
-          <td>X (Twitter) bot</td>
-          <td>2015.03</td>
-          <td>中国麻雀の役やルール、日本麻雀との違いなどについて自動で定期投稿をします。</td>
-          <td><a href="https://github.com/tomii9273/chinese_mahjong_bot">GitHub</a></td>
+      </table>
+     <td>Web アプリ</td>
+          <td>2024.12</td>
+          <td>新型コロナ等の検査キットを使った結果、薄いラインがあるように見える場合にグラフで可視化し、陽性・陰性の判定を補助します。</td>
+          <td>(準備中)</td>
         </tr>
-        <tr align="left">
-          <td><a href="https://twitter.com/AfterContestBot">AtCoder After Contest Bot</a></td>
-          <td>X (Twitter) bot</td>
-          <td>2023.09</td>
-          <td><a href="https://atcoder.jp/">AtCoder</a> でコンテスト後にテストケースが追加された際に自動で告知投稿をします。</td>
-          <td><a href="https://github.com/tomii9273/atcoder_after_contest_bot">GitHub</a></td>
-        </tr>
-        <tr align="left">
-          <td>
-            <a href="https://chromewebstore.google.com/detail/atcoder-parallel-alert/poiijcpfeaijlocfncmimadjkppkplef">AtCoder Parallel Alert</a>
-          </td>
-          <td>Chrome 拡張機能</td>
-          <td>2023.11</td>
-          <td>
-            <a href="https://atcoder.jp/">AtCoder</a> で AHC
-            とそれ以外のコンテストの問題文を同時に開いている場合に、後者の提出欄に警告文を表示します。<br />
-            誤提出による意図しない規約違反を防ぐのが目的です。
-          </td>
-          <td><a href="https://github.com/tomii9273/atcoder_parallel_alert">GitHub</a></td>
-        </tr>
-        <tr align="left">
-          <td><a href="https://tsumego-mini-239f0748ace2.herokuapp.com">3路盤 囲碁パズル</a></td>
-          <td>Web アプリ</td>
-          <td>2024.05</td>
-          <td>囲碁のルールを用いたパズルゲームです。</td>
-          <td><a href="https://github.com/tomii9273/tsumego_mini">GitHub</a></td>
-        </tr>
-        <tr align="left">
-          <td>
-            <a href="https://check-mahjong-hand.herokuapp.com/">麻雀の待ち判定・全アガリ形列挙<br />(オールマイティ牌・銀河牌対応)</a>
-          </td>
-          <td>Web アプリ</td>
-          <td>2023.03</td>
-          <td>
-            麻雀の手牌を入力すると、待ちを判定し、全アガリ形を列挙します。<br />特殊なルールで使用される「オールマイティ牌」が複数枚ある場合などのパターン数の多い計算も、数秒以内に行います。
-          </td>
-          <td><a href="https://github.com/tomii9273/check_mahjong_hand">GitHub</a></td>
-        </tr>
-        <tr align="left">
-          <td>
-            <a href="https://kensa-hantei-802eb44db172.herokuapp.com/">検査キット 薄いライン可視化</a>
-          </td>
-          <td>Web アプリ</td>
+      </table>
+      <td>Web アプリ</td>
           <td>2024.12</td>
           <td>新型コロナ等の検査キットを使った結果、薄いラインがあるように見える場合にグラフで可視化し、陽性・陰性の判定を補助します。</td>
           <td>(準備中)</td>
@@ -221,5 +449,3 @@
         <li><a href="https://www.kaggle.com/tomii9273">Kaggle</a></li>
       </ul>
     </section>
-  </body>
-</html>
