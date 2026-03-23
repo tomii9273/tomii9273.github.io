@@ -16,9 +16,19 @@
 }
 
 html {
-  scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 body {
   margin: 0;
   padding: 32px 16px 56px;
